@@ -1,0 +1,14 @@
+artifact_uri: file:C:\Users\LENOVO\Documents\MDS7202\labs\lab_8\mlruns/714956654201505994/4029cf425ef7428eb0e08cae7a3b996a/artifacts
+end_time: 1780970591230
+entry_point_name: ''
+experiment_id: '714956654201505994'
+lifecycle_stage: active
+run_id: 4029cf425ef7428eb0e08cae7a3b996a
+run_name: XGBoost_trial_1_lr_0.1512_depth_7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780970585340
+status: 3
+tags: []
+user_id: LENOVO

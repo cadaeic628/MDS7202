@@ -1,0 +1,10 @@
+artifact_location: file:C:\Users\LENOVO\Documents\MDS7202\labs\lab_8\mlruns/714956654201505994/models/m-21c823c0bbe74a04a7eb25aa68f1e380/artifacts
+creation_timestamp: 1780970631849
+experiment_id: '714956654201505994'
+last_updated_timestamp: 1780970637185
+model_id: m-21c823c0bbe74a04a7eb25aa68f1e380
+model_type: null
+name: model
+source_run_id: 248c87aa2b3143a1a3630cf34eec8ecf
+status: 2
+status_message: null
