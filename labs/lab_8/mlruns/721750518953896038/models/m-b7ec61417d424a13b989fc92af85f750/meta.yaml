@@ -1,0 +1,10 @@
+artifact_location: file:///home/sebastianmorales/Documentos/uchile/lab_prog_datos/MDS7202/labs/lab_8/mlruns/721750518953896038/models/m-b7ec61417d424a13b989fc92af85f750/artifacts
+creation_timestamp: 1781079005001
+experiment_id: '721750518953896038'
+last_updated_timestamp: 1781079005212
+model_id: m-b7ec61417d424a13b989fc92af85f750
+model_type: null
+name: model
+source_run_id: 1f7551ede23844a39a31e9426cbaf82a
+status: 2
+status_message: null
