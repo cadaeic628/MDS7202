@@ -6,6 +6,7 @@ from __future__ import annotations
 import os
 
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+os.environ.setdefault("MLFLOW_ALLOW_FILE_STORE", "true")
 
 import json
 import pickle
