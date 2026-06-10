@@ -1,9 +1,0 @@
-artifact_location: file:///home/sebastianmorales/Documentos/uchile/lab_prog_datos/MDS7202/labs/lab_8/mlruns/721750518953896038
-creation_time: 1781079001242
-effective_trace_archival_retention: null
-experiment_id: '721750518953896038'
-last_update_time: 1781079001242
-lifecycle_stage: active
-name: water_potability_xgboost_optuna_20260610_041001
-trace_location: null
-workspace: default

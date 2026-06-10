@@ -10,7 +10,6 @@ os.environ.setdefault("MLFLOW_ALLOW_FILE_STORE", "true")
 
 import json
 import pickle
-from datetime import datetime
 from importlib.metadata import version
 from pathlib import Path
 
@@ -31,6 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent
 DATA_PATH = BASE_DIR / "water_potability.csv"
 MODELS_DIR = BASE_DIR / "models"
 MLRUNS_DIR = BASE_DIR / "mlruns"
+OPTUNA_DB_PATH = BASE_DIR / "optuna_lab8.db"
+
+EXPERIMENT_NAME = "water_potability_xgboost_optuna"
+STUDY_NAME = "xgboost_water_potability_optimization"
 
 TARGET_COL = "Potability"
 
@@ -103,11 +106,12 @@ def optimize_model(n_trials: int = N_TRIALS):
 
     mlflow.set_tracking_uri(f"file:{MLRUNS_DIR}")
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    experiment_name = f"water_potability_xgboost_optuna_{timestamp}"
-
-    experiment_id = mlflow.create_experiment(experiment_name)
-    mlflow.set_experiment(experiment_name)
+    existing = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
+    if existing is None:
+        experiment_id = mlflow.create_experiment(EXPERIMENT_NAME)
+    else:
+        experiment_id = existing.experiment_id
+    mlflow.set_experiment(EXPERIMENT_NAME)
 
     def objective(trial: optuna.Trial) -> float:
         params = {
@@ -165,12 +169,18 @@ def optimize_model(n_trials: int = N_TRIALS):
 
         return valid_f1
 
+    storage = optuna.storages.RDBStorage(f"sqlite:///{OPTUNA_DB_PATH}")
     study = optuna.create_study(
         direction="maximize",
-        study_name="xgboost_water_potability_optimization",
+        study_name=STUDY_NAME,
+        sampler=optuna.samplers.TPESampler(seed=RANDOM_STATE),
+        storage=storage,
+        load_if_exists=True,
     )
 
-    study.optimize(objective, n_trials=n_trials)
+    remaining = n_trials - len(study.trials)
+    if remaining > 0:
+        study.optimize(objective, n_trials=remaining)
 
     best_model = get_best_model(experiment_id)
 
@@ -180,7 +190,7 @@ def optimize_model(n_trials: int = N_TRIALS):
         pickle.dump(best_model, file)
 
     print("Optimización finalizada.")
-    print(f"Experimento MLflow: {experiment_name}")
+    print(f"Experimento MLflow: {EXPERIMENT_NAME}")
     print(f"Mejor valid_f1: {study.best_value:.4f}")
     print(f"Mejores hiperparámetros: {study.best_params}")
     print(f"Modelo serializado en: {model_path}")

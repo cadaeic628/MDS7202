@@ -1,8 +1,8 @@
 artifact_location: file:///home/sebastianmorales/Documentos/uchile/lab_prog_datos/MDS7202/labs/lab_8/mlruns/0
-creation_time: 1781079001238
+creation_time: 1781080682862
 effective_trace_archival_retention: null
 experiment_id: '0'
-last_update_time: 1781079001238
+last_update_time: 1781080682862
 lifecycle_stage: active
 name: Default
 trace_location: null
