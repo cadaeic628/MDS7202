@@ -1,0 +1,14 @@
+artifact_uri: file:///home/sebastianmorales/Documentos/uchile/lab_prog_datos/MDS7202/labs/lab_8/mlruns/117288164807087951/b0df481b6aad4267b8ba9bc0067db41c/artifacts
+end_time: 1781080692898
+entry_point_name: ''
+experiment_id: '117288164807087951'
+lifecycle_stage: active
+run_id: b0df481b6aad4267b8ba9bc0067db41c
+run_name: XGBoost_trial_9_lr_0.0124_depth_4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1781080692607
+status: 3
+tags: []
+user_id: sebastianmorales
