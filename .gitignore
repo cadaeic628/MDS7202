@@ -208,3 +208,11 @@ __marimo__/
 
 #Labs
 images_lab/
+
+#Archivos Project
+mlflow.db
+project/mlflow.db
+mlruns/
+project/mlruns/
+.cache_pipelines/
+project/.cache_pipelines/
