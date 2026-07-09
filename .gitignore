@@ -216,3 +216,4 @@ mlruns/
 project/mlruns/
 .cache_pipelines/
 project/.cache_pipelines/
+project/.env

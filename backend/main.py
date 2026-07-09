@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
-
-from backend.generate_prediction import generate_prediction
-from backend.models import PredictionRequest, PredictionResponse
+from generate_prediction import generate_prediction
+from models import PredictionRequest, PredictionResponse
 
 app = FastAPI(
     title="ChaucherApp Ticket Priority API",
