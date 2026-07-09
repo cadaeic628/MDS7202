@@ -4,8 +4,6 @@ services:
     image: chaucherapp-backend
     container_name: chaucherapp-backend
     env_file: .env
-    environment:
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     volumes:
       - ./backend:/app
     networks:
