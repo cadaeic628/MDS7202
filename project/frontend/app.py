@@ -12,7 +12,7 @@ TIPOS_CUENTA = ["Business", "Free", "Premium"]
 
 
 def predecir(asunto, contenido, canal, categoria, tipo_cuenta, antiguedad):
-    """Valida el formulario, llama al backend y devuelve el nivel y las probabilidades."""
+    """Valida el formulario, llama al backend y devuelve el nivel de prioridad predicho."""
     if not contenido or not contenido.strip():
         raise gr.Error("El contenido del ticket no puede estar vacío.")
     try:
@@ -20,9 +20,7 @@ def predecir(asunto, contenido, canal, categoria, tipo_cuenta, antiguedad):
     except Exception as exc:  # errores de red o del backend se muestran en la interfaz
         raise gr.Error(f"No se pudo obtener la predicción: {exc}") from exc
 
-    nivel = data.get("nivel_prioridad", "desconocido")
-    probabilidades = data.get("probabilidades") or {}
-    return nivel, probabilidades
+    return data.get("prioridad", "desconocido")
 
 
 # Tema verde/menta acorde a la estética de una fintech (ChaucherApp = billetera digital).
@@ -64,14 +62,12 @@ with gr.Blocks(theme=tema, title="ChaucherApp · Priorización de tickets") as d
 
     boton = gr.Button("Predecir prioridad", variant="primary")
 
-    with gr.Row():
-        salida_nivel = gr.Label(label="Nivel de prioridad")
-        salida_probabilidades = gr.Label(label="Probabilidades por clase", num_top_classes=4)
+    salida_nivel = gr.Label(label="Nivel de prioridad")
 
     boton.click(
         predecir,
         inputs=[asunto, contenido, canal, categoria, tipo_cuenta, antiguedad],
-        outputs=[salida_nivel, salida_probabilidades],
+        outputs=[salida_nivel],
     )
 
 

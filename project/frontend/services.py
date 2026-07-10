@@ -21,16 +21,15 @@ def enviar_prediccion(
 ) -> dict:
     """Envía los datos del ticket al backend y retorna la respuesta del modelo.
 
-    El esquema del payload debe coincidir con PredictionRequest de backend/models.py.
-    Retorna el JSON de PredictionResponse (al menos con la clave 'nivel_prioridad').
+    El payload coincide con PredictionRequest de backend/models.py. El modelo solo usa el
+    texto, el canal y la categoría, así que tipo_cuenta y antigüedad se piden en la interfaz
+    pero no se envían al backend. Retorna el JSON de PredictionResponse (clave 'prioridad').
     """
     payload = {
-        "asunto": asunto,
-        "contenido": contenido,
+        "asunto_ticket": asunto,
+        "contenido_ticket": contenido,
         "canal_ticket": canal_ticket,
         "categoria_problema": categoria_problema,
-        "tipo_cuenta": tipo_cuenta,
-        "antiguedad_cuenta_dias": int(antiguedad_cuenta_dias),
     }
     respuesta = requests.post(f"{BACKEND_URL}/predict", json=payload, timeout=TIMEOUT_SEGUNDOS)
     respuesta.raise_for_status()
