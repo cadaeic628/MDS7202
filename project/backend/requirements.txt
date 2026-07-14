@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-python-dotenv
-langchain-google-genai
-cloudpickle==3.1.2
-pandas==2.3.3
-scikit-learn==1.8.0
-numpy==2.4.3
-nltk
