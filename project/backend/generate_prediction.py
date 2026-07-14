@@ -8,7 +8,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 BASE_DIR = Path(__file__).resolve().parent
 ROOT_DIR = BASE_DIR.parent
-ENV_PATH = ROOT_DIR / "project" / ".env"
+ENV_PATH = ROOT_DIR / ".env"
 MODEL_PATH = BASE_DIR / "modelo_final.pkl"
 
 load_dotenv(dotenv_path=ENV_PATH)
